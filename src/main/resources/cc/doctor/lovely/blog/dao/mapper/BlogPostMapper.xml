@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.doctor.lovely.blog.dao.mapper.BlogPostMapper">
+  <resultMap id="BaseResultMap" type="cc.doctor.lovely.blog.dao.model.BlogPost">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="allow_comment" jdbcType="TINYINT" property="allowComment" />
+    <result column="is_public" jdbcType="TINYINT" property="isPublic" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
+    <result column="summary" jdbcType="LONGVARCHAR" property="summary" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, type, status, title, allow_comment, is_public, is_deleted, created_at, 
+    updated_at
+  </sql>
+  <sql id="Blob_Column_List">
+    summary, content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blog_post
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog_post
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
+    insert into blog_post (id, user_id, type, 
+      status, title, allow_comment, 
+      is_public, is_deleted, created_at, 
+      updated_at, summary, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{allowComment,jdbcType=TINYINT}, 
+      #{isPublic,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP}, #{summary,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
+    insert into blog_post
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="allowComment != null">
+        allow_comment,
+      </if>
+      <if test="isPublic != null">
+        is_public,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="allowComment != null">
+        #{allowComment,jdbcType=TINYINT},
+      </if>
+      <if test="isPublic != null">
+        #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
+    update blog_post
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="allowComment != null">
+        allow_comment = #{allowComment,jdbcType=TINYINT},
+      </if>
+      <if test="isPublic != null">
+        is_public = #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
+    update blog_post
+    set user_id = #{userId,jdbcType=INTEGER},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      title = #{title,jdbcType=VARCHAR},
+      allow_comment = #{allowComment,jdbcType=TINYINT},
+      is_public = #{isPublic,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      summary = #{summary,jdbcType=LONGVARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cc.doctor.lovely.blog.dao.model.BlogPost">
+    update blog_post
+    set user_id = #{userId,jdbcType=INTEGER},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      title = #{title,jdbcType=VARCHAR},
+      allow_comment = #{allowComment,jdbcType=TINYINT},
+      is_public = #{isPublic,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
