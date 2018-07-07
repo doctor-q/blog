@@ -40,31 +40,13 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-         <table tableName="blog_category" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+         <table tableName="comment_source" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
                 enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="blog_post" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+         <table tableName="comment" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
                 enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="blog_post_tag" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="blog_tag" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="resource" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="role" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="role_resource" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="user" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="user_role" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+         <table tableName="approval" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
                 enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false" />
     </context>
