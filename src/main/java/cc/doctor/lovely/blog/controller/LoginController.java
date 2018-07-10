@@ -24,6 +24,16 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/signIn")
+    public String signIn() {
+        return "login";
+    }
+
+    @RequestMapping("/signUp")
+    public String signUp() {
+        return "/register";
+    }
+
     @RequestMapping("/login")
     public CommonResponse login(String username, String password) {
         User user = userService.getUserByUsernameAndPassword(username, password);

@@ -1,14 +1,13 @@
 package cc.doctor.lovely.blog.service.jwt;
 
+import cc.doctor.lovely.blog.dao.model.User;
+import cc.doctor.lovely.blog.utils.DateUtils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.cantang.yimi.wx.mp.dao.model.DisAccount;
-import com.cantang.yimi.wx.mp.service.Claims;
-import com.cantang.yimi.wx.mp.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,14 @@ public class JwtTokenService {
     @Autowired
     private Algorithm algorithm;
 
-    public String generateAccountToken(DisAccount account) {
-        return JWT.create().withClaim(Claims.HEADER_CLAIM_ACCOUNT_ID, account.getId())
-                .withClaim(Claims.HEADER_CLAIM_ACCOUNT_NAME, account.getAccountName())
+    public String generateAccountToken(User user) {
+        return JWT.create().withClaim(Claims.HEADER_CLAIM_USER_ID, user.getId())
+                .withClaim(Claims.HEADER_CLAIM_USERNAME, user.getUsername())
                 .withExpiresAt(DateUtils.timeAfter(DateUtils.ONE_DAY_MILLISECONDS))        //过期时间
                 .sign(algorithm);
     }
 
-    public DisAccount getAccountByToken(String accessToken) {
+    public User getAccountByToken(String accessToken) {
         if(StringUtils.isEmpty(accessToken)){
             log.info("token为空，请重新登录");
             return null;
@@ -40,14 +39,14 @@ public class JwtTokenService {
             JWTVerifier jwtVerifier = JWT.require(algorithm).build();
             DecodedJWT decodedJWT = jwtVerifier.verify(accessToken);
             Map<String, Claim> claims = decodedJWT.getClaims();
-            DisAccount disAccount = new DisAccount();
-            Claim accountId = claims.get(Claims.HEADER_CLAIM_ACCOUNT_ID);
-            if (accountId == null) {
+            User disAccount = new User();
+            Claim userId = claims.get(Claims.HEADER_CLAIM_USER_ID);
+            if (userId == null) {
                 return null;
             }
-            disAccount.setId(accountId.as(Integer.class));
-            Claim accountName = claims.get(Claims.HEADER_CLAIM_ACCOUNT_NAME);
-            disAccount.setAccountName(accountName.asString());
+            disAccount.setId(userId.as(Integer.class));
+            Claim username = claims.get(Claims.HEADER_CLAIM_USERNAME);
+            disAccount.setUsername(username.asString());
             return disAccount;
         } catch (IllegalArgumentException e) {
             log.error("", e);

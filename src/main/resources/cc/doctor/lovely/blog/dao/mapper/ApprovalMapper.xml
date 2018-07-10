@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.doctor.lovely.blog.dao.mapper.ApprovalMapper">
+  <resultMap id="BaseResultMap" type="cc.doctor.lovely.blog.dao.model.Approval">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="approval" jdbcType="TINYINT" property="approval" />
+    <result column="source_id" jdbcType="INTEGER" property="sourceId" />
+    <result column="approval_ref_id" jdbcType="INTEGER" property="approvalRefId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, approval, source_id, approval_ref_id, user_id, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from approval
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from approval
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cc.doctor.lovely.blog.dao.model.Approval">
+    insert into approval (id, approval, source_id, 
+      approval_ref_id, user_id, created_at, 
+      updated_at)
+    values (#{id,jdbcType=INTEGER}, #{approval,jdbcType=TINYINT}, #{sourceId,jdbcType=INTEGER}, 
+      #{approvalRefId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cc.doctor.lovely.blog.dao.model.Approval">
+    insert into approval
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="approval != null">
+        approval,
+      </if>
+      <if test="sourceId != null">
+        source_id,
+      </if>
+      <if test="approvalRefId != null">
+        approval_ref_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="approval != null">
+        #{approval,jdbcType=TINYINT},
+      </if>
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="approvalRefId != null">
+        #{approvalRefId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cc.doctor.lovely.blog.dao.model.Approval">
+    update approval
+    <set>
+      <if test="approval != null">
+        approval = #{approval,jdbcType=TINYINT},
+      </if>
+      <if test="sourceId != null">
+        source_id = #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="approvalRefId != null">
+        approval_ref_id = #{approvalRefId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cc.doctor.lovely.blog.dao.model.Approval">
+    update approval
+    set approval = #{approval,jdbcType=TINYINT},
+      source_id = #{sourceId,jdbcType=INTEGER},
+      approval_ref_id = #{approvalRefId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
