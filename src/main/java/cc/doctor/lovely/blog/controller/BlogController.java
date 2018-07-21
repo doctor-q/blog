@@ -19,4 +19,14 @@ public class BlogController {
     public CommonResponse delete(DeleteBlogRequest deleteBlogRequest) {
         return null;
     }
+
+    @RequestMapping("edit")
+    public String edit() {
+        return "editblog";
+    }
+
+    @RequestMapping("list")
+    public String list() {
+        return "bloglist";
+    }
 }
