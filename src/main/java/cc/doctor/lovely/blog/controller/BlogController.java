@@ -27,6 +27,11 @@ public class BlogController {
 
     @RequestMapping("list")
     public String list() {
-        return "bloglist";
+        return "profilebloglist";
+    }
+
+    @RequestMapping("detail")
+    public String detail() {
+        return "blogdetail";
     }
 }

@@ -14,4 +14,9 @@ public class IndexController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping("settings")
+    public String settings() {
+        return "settings";
+    }
 }
