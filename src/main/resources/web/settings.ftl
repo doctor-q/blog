@@ -124,6 +124,11 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="col-xs-11">
+                                    <button class="btn btn-primary btn-sm pull-right">提交</button>
+                                </div>
+                            </div>
                         </div>
 
                         <div id="contact" class="tab-pane fade">
@@ -162,6 +167,11 @@
                                 <div class="col-xs-2"><label class="pull-right">
                                     Twitter<i class="ace-icon fa fa-twitter"></i></label></div>
                                 <div class="col-xs-9"><input class="form-control"></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-11">
+                                    <button class="btn btn-primary btn-sm pull-right">提交</button>
+                                </div>
                             </div>
                         </div>
 

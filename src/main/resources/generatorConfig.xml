@@ -40,13 +40,7 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-         <table tableName="comment_source" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="comment" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
-                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-                enableSelectByExample="false" selectByExampleQueryId="false" />
-         <table tableName="approval" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+         <table tableName="attention" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
                 enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false" />
     </context>

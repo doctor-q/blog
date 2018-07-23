@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="cc.doctor.lovely.blog.dao.model.BlogPost">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="type" jdbcType="TINYINT" property="type" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="title" jdbcType="VARCHAR" property="title" />
@@ -18,7 +19,7 @@
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_id, type, status, title, allow_comment, is_public, is_deleted, created_at, 
+    id, user_id, username, type, status, title, allow_comment, is_public, is_deleted, created_at,
     updated_at
   </sql>
   <sql id="Blob_Column_List">
@@ -37,12 +38,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
-    insert into blog_post (id, user_id, type, 
+    insert into blog_post (id, user_id, username, type,
       status, title, allow_comment, 
       is_public, is_deleted, created_at, 
       updated_at, summary, content
       )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT},
       #{status,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{allowComment,jdbcType=TINYINT}, 
       #{isPublic,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, 
       #{updatedAt,jdbcType=TIMESTAMP}, #{summary,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR}
@@ -56,6 +57,9 @@
       </if>
       <if test="userId != null">
         user_id,
+      </if>
+      <if test="username != null">
+        username,
       </if>
       <if test="type != null">
         type,
@@ -95,6 +99,9 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
       <if test="type != null">
         #{type,jdbcType=TINYINT},
       </if>
@@ -133,6 +140,9 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
       <if test="type != null">
         type = #{type,jdbcType=TINYINT},
       </if>
@@ -169,6 +179,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
     update blog_post
     set user_id = #{userId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
       status = #{status,jdbcType=TINYINT},
       title = #{title,jdbcType=VARCHAR},
@@ -184,6 +195,7 @@
   <update id="updateByPrimaryKey" parameterType="cc.doctor.lovely.blog.dao.model.BlogPost">
     update blog_post
     set user_id = #{userId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
       status = #{status,jdbcType=TINYINT},
       title = #{title,jdbcType=VARCHAR},
