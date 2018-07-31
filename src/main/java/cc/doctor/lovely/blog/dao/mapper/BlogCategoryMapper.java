@@ -1,7 +1,9 @@
 package cc.doctor.lovely.blog.dao.mapper;
 
 import cc.doctor.lovely.blog.dao.model.BlogCategory;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface BlogCategoryMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface BlogCategoryMapper {
     int updateByPrimaryKeySelective(BlogCategory record);
 
     int updateByPrimaryKey(BlogCategory record);
+
+    void deleteByBlogId(Integer blogId);
 }

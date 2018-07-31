@@ -3,6 +3,9 @@ package cc.doctor.lovely.blog.controller;
 import cc.doctor.lovely.blog.controller.request.DeleteBlogRequest;
 import cc.doctor.lovely.blog.controller.request.PostBlogRequest;
 import cc.doctor.lovely.blog.controller.response.CommonResponse;
+import cc.doctor.lovely.blog.service.AuthService;
+import cc.doctor.lovely.blog.service.BlogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,14 +13,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("blog")
 public class BlogController {
 
+    @Autowired
+    private AuthService authService;
+
+    @Autowired
+    private BlogService blogService;
+
+
     @RequestMapping("post")
     public CommonResponse post(PostBlogRequest postBlogRequest) {
-        return null;
+        authService.setUserRequest(postBlogRequest);
+        return blogService.post(postBlogRequest);
     }
 
     @RequestMapping("delete")
     public CommonResponse delete(DeleteBlogRequest deleteBlogRequest) {
-        return null;
+        authService.setUserRequest(deleteBlogRequest);
+        return blogService.delete(deleteBlogRequest);
     }
 
     @RequestMapping("edit")
