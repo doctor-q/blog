@@ -15,6 +15,8 @@ public class BlogPost {
 
     private String title;
 
+    private Integer category;
+
     private Byte allowComment;
 
     private Byte isPublic;
@@ -71,6 +73,14 @@ public class BlogPost {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
     }
 
     public Byte getAllowComment() {

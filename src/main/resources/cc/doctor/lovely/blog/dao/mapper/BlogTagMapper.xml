@@ -55,4 +55,10 @@
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <insert id="insertTags">
+    INSERT INTO blog_post_tag(post_id, tag) VALUES
+    <foreach collection="tags" item="tag" separator=",">
+      (#{blogId}, #{tag})
+    </foreach>
+  </insert>
 </mapper>

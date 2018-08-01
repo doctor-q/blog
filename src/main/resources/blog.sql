@@ -40,6 +40,7 @@ CREATE TABLE `blog_post` (
   `type` tinyint(11) NOT NULL DEFAULT '0' COMMENT '0 为文章，1 为页面',
   `status` tinyint(11) NOT NULL DEFAULT '0' COMMENT '0 为草稿，1 为待审核，2 为已拒绝，3 为已经发布',
   `title` varchar(255) NOT NULL COMMENT '博客标题',
+  `category` INT UNSIGNED NOT NULL COMMENT '博客分类',
   `summary` longtext NOT NULL COMMENT '摘要',
   `content` longtext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '博客内容',
   `allow_comment` tinyint(11) NOT NULL DEFAULT '1' COMMENT '是否允许评论，1 为允许， 0 为不允许',

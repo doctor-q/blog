@@ -1,7 +1,10 @@
 package cc.doctor.lovely.blog.dao.mapper;
 
 import cc.doctor.lovely.blog.dao.model.BlogTag;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface BlogTagMapper {
@@ -18,4 +21,6 @@ public interface BlogTagMapper {
     int updateByPrimaryKey(BlogTag record);
 
     void deleteByBlogId(Integer blogId);
+
+    void insertTags(@Param("blogId") Integer blogId, @Param("tags") List<String> tags);
 }

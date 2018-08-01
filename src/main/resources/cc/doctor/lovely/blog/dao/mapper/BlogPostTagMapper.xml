@@ -20,7 +20,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostTag">
-    insert into blog_post_tag (id, post_id, tag_id
+    insert into blog_post_tag (id, post_id, tag
       )
     values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER}, #{tagId,jdbcType=INTEGER}
       )
@@ -65,7 +65,7 @@
   <update id="updateByPrimaryKey" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostTag">
     update blog_post_tag
     set post_id = #{postId,jdbcType=INTEGER},
-      tag_id = #{tagId,jdbcType=INTEGER}
+      tag = #{tagId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -15,6 +15,8 @@ public class PostBlogRequest extends UserRequest {
 
     private String title;
 
+    private Integer category;
+
     private boolean allowComment = true;
 
     private boolean isPublic = true;
@@ -22,8 +24,6 @@ public class PostBlogRequest extends UserRequest {
     private String summary;
 
     private String content;
-
-    private Integer category;
 
     private List<String> tags;
 

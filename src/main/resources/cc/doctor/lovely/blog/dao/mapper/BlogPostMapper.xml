@@ -8,6 +8,7 @@
     <result column="type" jdbcType="TINYINT" property="type" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="category" jdbcType="INTEGER" property="category" />
     <result column="allow_comment" jdbcType="TINYINT" property="allowComment" />
     <result column="is_public" jdbcType="TINYINT" property="isPublic" />
     <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
@@ -19,7 +20,7 @@
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_id, username, type, status, title, allow_comment, is_public, is_deleted, created_at,
+    id, user_id, username, type, status, title, category, allow_comment, is_public, is_deleted, created_at,
     updated_at
   </sql>
   <sql id="Blob_Column_List">
@@ -46,12 +47,12 @@
   </delete>
   <insert id="insert" parameterType="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
     insert into blog_post (id, user_id, username, type,
-      status, title, allow_comment, 
+      status, title, category, allow_comment,
       is_public, is_deleted, created_at, 
       updated_at, summary, content
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT},
-      #{status,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{allowComment,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, #{category,jdbcType=INTEGER}, #{allowComment,jdbcType=TINYINT},
       #{isPublic,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{createdAt,jdbcType=TIMESTAMP}, 
       #{updatedAt,jdbcType=TIMESTAMP}, #{summary,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR}
       )
@@ -76,6 +77,9 @@
       </if>
       <if test="title != null">
         title,
+      </if>
+      <if test="category != null">
+        category,
       </if>
       <if test="allowComment != null">
         allow_comment,
@@ -118,6 +122,9 @@
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
+      <if test="category != null">
+        #{category,jdbcType=INTEGER},
+      </if>
       <if test="allowComment != null">
         #{allowComment,jdbcType=TINYINT},
       </if>
@@ -159,6 +166,9 @@
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
+      <if test="category != null">
+        category = #{category,jdbcType=INTEGER},
+      </if>
       <if test="allowComment != null">
         allow_comment = #{allowComment,jdbcType=TINYINT},
       </if>
@@ -190,6 +200,7 @@
       type = #{type,jdbcType=TINYINT},
       status = #{status,jdbcType=TINYINT},
       title = #{title,jdbcType=VARCHAR},
+      category = #{category,jdbcType=INTEGER},
       allow_comment = #{allowComment,jdbcType=TINYINT},
       is_public = #{isPublic,jdbcType=TINYINT},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
@@ -206,6 +217,7 @@
       type = #{type,jdbcType=TINYINT},
       status = #{status,jdbcType=TINYINT},
       title = #{title,jdbcType=VARCHAR},
+      category = #{category,jdbcType=INTEGER},
       allow_comment = #{allowComment,jdbcType=TINYINT},
       is_public = #{isPublic,jdbcType=TINYINT},
       is_deleted = #{isDeleted,jdbcType=TINYINT},

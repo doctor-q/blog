@@ -2,6 +2,7 @@ package cc.doctor.lovely.blog.service;
 
 import cc.doctor.lovely.blog.controller.request.DeleteBlogRequest;
 import cc.doctor.lovely.blog.controller.request.PostBlogRequest;
+import cc.doctor.lovely.blog.controller.response.BlogDetailResponse;
 import cc.doctor.lovely.blog.controller.response.CommonResponse;
 import cc.doctor.lovely.blog.controller.response.Errors;
 import cc.doctor.lovely.blog.dao.mapper.BlogCategoryMapper;
@@ -31,17 +32,27 @@ public class BlogService {
             if (!userId.equals(postBlogRequest.getUserId())) {
                 return CommonResponse.errorResponse(Errors.ACCESS_DENY);
             }
-            blogCategoryMapper.deleteByBlogId(postBlogRequest.getId());
             blogTagMapper.deleteByBlogId(postBlogRequest.getId());
             blogPostMapper.updateByPrimaryKeyWithBLOBs(blogPostWithBLOBs);
-
+            blogTagMapper.insertTags(postBlogRequest.getId(), postBlogRequest.getTags());
         } else {
             blogPostMapper.insertSelective(blogPostWithBLOBs);
+            blogTagMapper.insertTags(blogPostWithBLOBs.getId(), postBlogRequest.getTags());
         }
         return CommonResponse.successResponse(null);
     }
 
     public CommonResponse delete(DeleteBlogRequest deleteBlogRequest) {
+        BlogPost blogPost = blogPostMapper.selectById(deleteBlogRequest.getId());
+        Integer userId = blogPost.getUserId();
+        if (!userId.equals(deleteBlogRequest.getUserId())) {
+            return CommonResponse.errorResponse(Errors.ACCESS_DENY);
+        }
+        blogPostMapper.deleteByPrimaryKey(deleteBlogRequest.getId());
+        return CommonResponse.successResponse(null);
+    }
+
+    public BlogDetailResponse getBlogDetail(Integer id) {
         return null;
     }
 }

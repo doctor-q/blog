@@ -2,11 +2,14 @@ package cc.doctor.lovely.blog.controller;
 
 import cc.doctor.lovely.blog.controller.request.DeleteBlogRequest;
 import cc.doctor.lovely.blog.controller.request.PostBlogRequest;
+import cc.doctor.lovely.blog.controller.response.BlogDetailResponse;
 import cc.doctor.lovely.blog.controller.response.CommonResponse;
 import cc.doctor.lovely.blog.service.AuthService;
 import cc.doctor.lovely.blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -32,8 +35,10 @@ public class BlogController {
         return blogService.delete(deleteBlogRequest);
     }
 
-    @RequestMapping("edit")
-    public String edit() {
+    @RequestMapping("edit/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model) {
+        BlogDetailResponse blogDetailResponse = blogService.getBlogDetail(id);
+        model.addAttribute("blog", blogDetailResponse);
         return "editblog";
     }
 
