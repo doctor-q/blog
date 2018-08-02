@@ -14,11 +14,10 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
     @Autowired
     private AuthFilter authFilter;
 
-
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authFilter)
-                .excludePathPatterns("/index");
+                .excludePathPatterns("/index", "/login", "/assets/**");
         super.addInterceptors(registry);
     }
 
