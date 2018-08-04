@@ -1,7 +1,9 @@
 package cc.doctor.lovely.blog.dao.mapper;
 
 import cc.doctor.lovely.blog.dao.model.Comment;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CommentMapper {
     int deleteByPrimaryKey(Integer id);
 

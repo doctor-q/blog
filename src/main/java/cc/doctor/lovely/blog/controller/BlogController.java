@@ -1,5 +1,6 @@
 package cc.doctor.lovely.blog.controller;
 
+import cc.doctor.lovely.blog.controller.request.BlogListRequest;
 import cc.doctor.lovely.blog.controller.request.DeleteBlogRequest;
 import cc.doctor.lovely.blog.controller.request.PostBlogRequest;
 import cc.doctor.lovely.blog.controller.response.BlogDetailResponse;
@@ -43,7 +44,8 @@ public class BlogController {
     }
 
     @RequestMapping("list")
-    public String list() {
+    public String list(BlogListRequest blogListRequest) {
+        blogService.getBlogList(blogListRequest);
         return "profilebloglist";
     }
 

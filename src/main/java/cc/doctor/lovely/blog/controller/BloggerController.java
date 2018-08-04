@@ -1,10 +1,16 @@
 package cc.doctor.lovely.blog.controller;
 
+import cc.doctor.lovely.blog.controller.request.UpdateBloggerRequest;
+import cc.doctor.lovely.blog.controller.request.UpdateContactRequest;
+import cc.doctor.lovely.blog.service.BloggerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BloggerController {
+    @Autowired
+    private BloggerService bloggerService;
 
     @RequestMapping("addBlogger")
     public Object addBlogger() {
@@ -12,12 +18,12 @@ public class BloggerController {
     }
 
     @RequestMapping("updateBloggerInfo")
-    public Object updateBloggerInfo() {
-        return null;
+    public Object updateBloggerInfo(UpdateBloggerRequest updateBloggerRequest) {
+        return bloggerService.updateBloggerInfo(updateBloggerRequest);
     }
 
     @RequestMapping("updateContacts")
-    public Object updateContacts() {
-        return null;
+    public Object updateContacts(UpdateContactRequest updateContactRequest) {
+        return bloggerService.updateContacts(updateContactRequest);
     }
 }

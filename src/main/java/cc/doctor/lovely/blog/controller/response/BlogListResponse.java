@@ -3,10 +3,9 @@ package cc.doctor.lovely.blog.controller.response;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
-public class BlogDetailResponse {
+public class BlogListResponse {
     private String id;
 
     private Integer userId;
@@ -20,8 +19,6 @@ public class BlogDetailResponse {
     private String title;
 
     private String summary;
-
-    private String content;
 
     private Integer category;
 
@@ -37,5 +34,4 @@ public class BlogDetailResponse {
 
     private Date createdAt;
 
-    private List<CommentDetailResponse> commentDetails;
 }
