@@ -35,7 +35,8 @@
                 </ul>
             </nav>
             <span class="pull-right" style="padding-top: 10px">
-                <a href="#" style="color: white">牧羊人</a>
+                <a href="#" style="color: white">写博客</a>
+                &nbsp;&nbsp;&nbsp;<a href="#" style="color: white">牧羊人</a>
                 &nbsp;&nbsp;&nbsp;<a href="#" style="color: white">设置</a>
             </span>
         </div>

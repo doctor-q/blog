@@ -1,52 +1,18 @@
 package cc.doctor.lovely.blog.controller.response;
 
+import cc.doctor.lovely.blog.dao.model.Blogger;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import java.util.Date;
 
 @Data
-public class BloggerResponse {
-    private Integer id;
+public class BloggerResponse extends Blogger {
 
-    private Integer userId;
+    public BloggerResponse() {
+    }
 
-    private String username;
-
-    private String header;
-
-    private Byte gender;
-
-    private Date birthday;
-
-    private String address;
-
-    private String company;
-
-    private String position;
-
-    private Byte marriageStatus;
-
-    private String mobile;
-
-    private String email;
-
-    private String qq;
-
-    private String github;
-
-    private String weibo;
-
-    private String facebook;
-
-    private String twitter;
-
-    private Byte isDeleted;
-
-    private Date createdAt;
-
-    private Date updatedAt;
-
-    private Integer followerNum;
-
-    private Integer attentionNum;
+    public BloggerResponse(Blogger blogger) {
+        BeanUtils.copyProperties(blogger, this);
+    }
 }

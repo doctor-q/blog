@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 public class AuthService {
     public void setUserRequest(UserRequest userRequest) {
         String accessToken = userRequest.getAccessToken();
-
+        userRequest.setUserId(1);
+        userRequest.setUsername("藏镜人");
     }
 }

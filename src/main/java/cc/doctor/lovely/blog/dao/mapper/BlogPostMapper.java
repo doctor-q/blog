@@ -21,4 +21,6 @@ public interface BlogPostMapper {
     int updateByPrimaryKeyWithBLOBs(BlogPostWithBLOBs record);
 
     int updateByPrimaryKey(BlogPost record);
+
+    int selectBloggerCount(Integer userId);
 }

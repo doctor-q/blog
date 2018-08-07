@@ -5,7 +5,7 @@ import lombok.Data;
 
 
 @Data
-public class PageRequest extends AccessRequiredRequest {
+public class PageRequest {
     private static final long serialVersionUID = -7022848697987418010L;
     public Integer page = 1;
     public Integer pageNums = 10;

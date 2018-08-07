@@ -19,6 +19,8 @@ public class CommentDetailResponse {
 
     private Integer userId;
 
+    private String userName;
+
     private Date createdAt;
 
     private List<CommentDetailResponse> children;

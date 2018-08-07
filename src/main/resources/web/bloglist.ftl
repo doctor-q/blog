@@ -10,7 +10,7 @@
     <div class="main-content">
         <div class="page-content">
             <div class="row">
-                <#--排序-->
+            <#--排序-->
                 <div class="row">
                     <div class="dropdown">
                         <button data-toggle="dropdown" class="btn btn-xs dropdown-toggle" href="#">
@@ -33,163 +33,41 @@
                     </div>
 
                 </div>
-                    <#--列表-->
+            <#--列表-->
                 <div class="row">
-                    <div class="widget-box transparent">
-                        <div class="widget-header widget-header-small">
-                            <h5 class="widget-title smaller">
-                                <a href="#" class="blue">《我不是药神》 观影有感——为自己挣命</a>
-                            </h5>
+                    <#list blogList as blog>
+                        <div class="widget-box transparent">
+                            <div class="widget-header widget-header-small">
+                                <h5 class="widget-title smaller">
+                                    <a href="#" class="blue">{{blog.title}}</a>
+                                </h5>
 
-                            <span class="widget-toolbar no-border">
+                                <span class="widget-toolbar no-border">
                         <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                        16:22
+                        {{blog.createdAt}}
                         </span>
-                        </div>
+                            </div>
 
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div style="padding-bottom: 15px">
-                                    单从电影的角度看，这确实是一部很好的电影。我一直觉得，电影就是讲故事，剧本是故事的框架，而演员是故事的血肉。无疑，这部电影骨架坚实，血肉丰满。
-                                    但我今天不想谈这部电影的好与坏，只就故事的些许片段进行讨论。 电影中有这样一幕，黄毛引开警察后被车撞死，在医院程勇质问警官“他只是想活着，有罪吗？”有罪吗？ ...
-                                </div>
-                                <div>
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <div style="padding-bottom: 15px">
+                                        {{blog.summary}}
+                                    </div>
+                                    <div>
                                     <span><i class="ace-icon glyphicon glyphicon-user"></i>
                                         作者：<a href="#">牧羊人</a></span>
-                                    <span class="pull-right">
-                                        <i class="ace-icon fa fa-heart"></i>赞(0)
-                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论(0)
-                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(0)</span>
+                                        <span class="pull-right">
+                                        <i class="ace-icon fa fa-heart"></i>赞({{blog.approvalNum}})
+                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论({{blog.commentNum}})
+                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读({{blog.readNum}})</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="hr hr16 dotted"></div>
-                    <div class="widget-box transparent">
-                        <div class="widget-header widget-header-small">
-                            <h5 class="widget-title smaller">
-                                <a href="#" class="blue">《我不是药神》 观影有感——为自己挣命</a>
-                            </h5>
-
-                            <span class="widget-toolbar no-border">
-                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                16:22
-                            </span>
-                        </div>
-
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div>
-                                    单从电影的角度看，这确实是一部很好的电影。我一直觉得，电影就是讲故事，剧本是故事的框架，而演员是故事的血肉。无疑，这部电影骨架坚实，血肉丰满。
-                                    但我今天不想谈这部电影的好与坏，只就故事的些许片段进行讨论。 电影中有这样一幕，黄毛引开警察后被车撞死，在医院程勇质问警官“他只是想活着，有罪吗？”有罪吗？ ...
-                                </div>
-                                <div>
-                                    <span><i class="ace-icon glyphicon glyphicon-user"></i>
-                                        作者：<a href="#">牧羊人</a></span>
-                                    <span class="pull-right">
-                                        <i class="ace-icon fa fa-heart"></i>赞(0)
-                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论(0)
-                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(0)</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hr hr16 dotted"></div>
-                    <div class="widget-box transparent">
-                        <div class="widget-header widget-header-small">
-                            <h5 class="widget-title smaller">
-                                <a href="#" class="blue">《我不是药神》 观影有感——为自己挣命</a>
-                            </h5>
-
-                            <span class="widget-toolbar no-border">
-                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                16:22
-                            </span>
-                        </div>
-
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div>
-                                    单从电影的角度看，这确实是一部很好的电影。我一直觉得，电影就是讲故事，剧本是故事的框架，而演员是故事的血肉。无疑，这部电影骨架坚实，血肉丰满。
-                                    但我今天不想谈这部电影的好与坏，只就故事的些许片段进行讨论。 电影中有这样一幕，黄毛引开警察后被车撞死，在医院程勇质问警官“他只是想活着，有罪吗？”有罪吗？ ...
-                                </div>
-                                <div>
-                                    <span><i class="ace-icon glyphicon glyphicon-user"></i>
-                                        作者：<a href="#">牧羊人</a></span>
-                                    <span class="pull-right">
-                                        <i class="ace-icon fa fa-heart"></i>赞(0)
-                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论(0)
-                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(0)</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hr hr16 dotted"></div>
-                    <div class="widget-box transparent">
-                        <div class="widget-header widget-header-small">
-                            <h5 class="widget-title smaller">
-                                <a href="#" class="blue">《我不是药神》 观影有感——为自己挣命</a>
-                            </h5>
-
-                            <span class="widget-toolbar no-border">
-                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                16:22
-                            </span>
-                        </div>
-
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div>
-                                    单从电影的角度看，这确实是一部很好的电影。我一直觉得，电影就是讲故事，剧本是故事的框架，而演员是故事的血肉。无疑，这部电影骨架坚实，血肉丰满。
-                                    但我今天不想谈这部电影的好与坏，只就故事的些许片段进行讨论。 电影中有这样一幕，黄毛引开警察后被车撞死，在医院程勇质问警官“他只是想活着，有罪吗？”有罪吗？ ...
-                                </div>
-                                <div>
-                                    <span><i class="ace-icon glyphicon glyphicon-user"></i>
-                                        作者：<a href="#">牧羊人</a></span>
-                                    <span class="pull-right">
-                                        <i class="ace-icon fa fa-heart"></i>赞(0)
-                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论(0)
-                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(0)</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hr hr16 dotted"></div>
-                    <div class="widget-box transparent">
-                        <div class="widget-header widget-header-small">
-                            <h5 class="widget-title smaller">
-                                <a href="#" class="blue">《我不是药神》 观影有感——为自己挣命</a>
-                            </h5>
-
-                            <span class="widget-toolbar no-border">
-                            <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                16:22
-                            </span>
-                        </div>
-
-                        <div class="widget-body">
-                            <div class="widget-main">
-                                <div>
-                                    单从电影的角度看，这确实是一部很好的电影。我一直觉得，电影就是讲故事，剧本是故事的框架，而演员是故事的血肉。无疑，这部电影骨架坚实，血肉丰满。
-                                    但我今天不想谈这部电影的好与坏，只就故事的些许片段进行讨论。 电影中有这样一幕，黄毛引开警察后被车撞死，在医院程勇质问警官“他只是想活着，有罪吗？”有罪吗？ ...
-                                </div>
-                                <div>
-                                    <span><i class="ace-icon glyphicon glyphicon-user"></i>
-                                        作者：<a href="#">牧羊人</a></span>
-                                    <span class="pull-right">
-                                        <i class="ace-icon fa fa-heart"></i>赞(0)
-                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论(0)
-                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(0)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hr hr16 dotted"></div>
+                        <div class="hr hr16 dotted"></div>
+                    </#list>
                 </div>
-                <#--分页-->
+            <#--分页-->
                 <div class="pull-right">
                     <a href="#">上一页</a>
                     &nbsp;&nbsp;

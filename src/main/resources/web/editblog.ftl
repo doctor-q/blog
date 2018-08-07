@@ -18,7 +18,7 @@
                 <div class="col-xs-8">
                     <div class="col-xs-12">
                         <div class="header blue">标题</div>
-                        <input class="form-control">
+                        <input class="form-control" <#if blogDetail??>value="{{blogDetail.title}}"</#if>>
                     </div>
                     <div class="col-sm-12">
                         <div class="header blue">内容</div>
@@ -28,7 +28,6 @@
                                 <div class="widget-main no-padding">
                                     <div class="wysiwyg-editor" id="editor1"></div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -37,16 +36,16 @@
                         <div class="header blue">分类</div>
                         <div>
                             <label class="col-xs-3">
-                                <input name="form-field-checkbox" type="checkbox">Java
+                                <input name="category" type="radio">Java
                             </label>
                             <label class="col-xs-3">
-                                <input name="form-field-checkbox" type="checkbox">Mysql
+                                <input name="category" type="radio">Mysql
                             </label>
                             <label class="col-xs-3">
-                                <input name="form-field-checkbox" type="checkbox">操作系统
+                                <input name="category" type="radio">操作系统
                             </label>
                             <label class="col-xs-3">
-                                <input name="form-field-checkbox" type="checkbox">算法
+                                <input name="category" type="radio">算法
                             </label>
                         </div>
                     </div>

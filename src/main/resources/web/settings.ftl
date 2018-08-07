@@ -62,10 +62,6 @@
                     <div class="tab-content" style="height: 500px">
                         <div id="profile" class="tab-pane fade in active">
                             <div class="form-group">
-                                <div class="col-xs-2"><label class="pull-right">用户名：</label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
-                            </div>
-                            <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">头像：</label></div>
                                 <div class="col-xs-9">
                                     <label class="ace-file-input"><input type="file" id="id-input-file-2">

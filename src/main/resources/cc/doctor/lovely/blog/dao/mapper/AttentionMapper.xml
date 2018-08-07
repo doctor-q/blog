@@ -125,4 +125,10 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectFollowerCount" resultType="int">
+    SELECT count(1) FROM attention WHERE blogger_id=#{bloggerId}
+  </select>
+  <select id="selectAttentionCount" resultType="int">
+    SELECT count(1) FROM attention WHERE follower_id=#{followerId}
+  </select>
 </mapper>

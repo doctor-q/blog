@@ -18,6 +18,7 @@ CREATE TABLE comment (
   source_id INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '评论源',
   comment_ref_id INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '评论对象id',
   user_id INT UNSIGNED NOT NULL COMMENT '评论人id',
+  `username` VARCHAR(50) NOT NULL COMMENT '作者名字，冗余',
   created_at DATETIME NOT NULL DEFAULT current_timestamp COMMENT '创建时间',
   updated_at DATETIME NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp COMMENT '更新时间',
   PRIMARY KEY(id)
@@ -30,6 +31,7 @@ CREATE TABLE approval (
   source_id INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '点赞源',
   approval_ref_id INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '点赞对象id',
   user_id INT UNSIGNED NOT NULL COMMENT '评论人id',
+  `username` VARCHAR(50) NOT NULL COMMENT '作者名字，冗余',
   created_at DATETIME NOT NULL DEFAULT current_timestamp COMMENT '创建时间',
   updated_at DATETIME NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp COMMENT '更新时间',
   PRIMARY KEY(id)
