@@ -1,4 +1,4 @@
-package cc.doctor.lovely.blog.controller.response;
+package cc.doctor.lovely.blog.service;
 
 import lombok.Getter;
 

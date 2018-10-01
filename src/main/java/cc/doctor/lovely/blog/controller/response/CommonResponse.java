@@ -1,5 +1,6 @@
 package cc.doctor.lovely.blog.controller.response;
 
+import cc.doctor.lovely.blog.service.Errors;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -32,6 +33,13 @@ public class CommonResponse<T> implements Serializable {
         return commonResponse;
     }
 
+    public static CommonResponse errorResponse(Integer errorCode, String errorMessage) {
+        CommonResponse commonResponse = failedResponse();
+        commonResponse.setCode(errorCode);
+        commonResponse.setMessage(errorMessage);
+        return commonResponse;
+    }
+
     public static CommonResponse accessDenyResponse() {
         return errorResponse(Errors.ACCESS_DENY);
     }
@@ -44,5 +52,9 @@ public class CommonResponse<T> implements Serializable {
         CommonResponse failedResponse = failedResponse();
         failedResponse.setMessage(message);
         return failedResponse;
+    }
+
+    public static CommonResponse successResponse() {
+        return successResponse(null);
     }
 }

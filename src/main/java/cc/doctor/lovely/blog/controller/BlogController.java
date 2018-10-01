@@ -9,6 +9,7 @@ import cc.doctor.lovely.blog.controller.response.BlogListResponse;
 import cc.doctor.lovely.blog.controller.response.CommonResponse;
 import cc.doctor.lovely.blog.service.AuthService;
 import cc.doctor.lovely.blog.service.BlogService;
+import cc.doctor.lovely.blog.service.BloggerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,9 @@ public class BlogController {
 
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private BloggerService bloggerService;
 
 
     @RequestMapping("post")
@@ -57,6 +61,7 @@ public class BlogController {
     public String list(BlogListRequest blogListRequest, Model model) {
         List<BlogListResponse> blogList = blogService.getBlogList(blogListRequest);
         model.addAttribute("blogList", blogList);
+        model.addAttribute("blogger", bloggerService.getBloggerDetail(blogListRequest.getBloggerId()));
         return "profilebloglist";
     }
 

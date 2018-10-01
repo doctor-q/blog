@@ -17,7 +17,7 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authFilter)
-                .excludePathPatterns("/index", "/login", "/assets/**");
+                .excludePathPatterns("/index", "/login", "/assets/**", "/static/**");
         super.addInterceptors(registry);
     }
 

@@ -1,7 +1,6 @@
 package cc.doctor.lovely.blog.controller.filter;
 
 import cc.doctor.lovely.blog.controller.response.CommonResponse;
-import cc.doctor.lovely.blog.controller.response.Errors;
 import cc.doctor.lovely.blog.service.AuthService;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +31,9 @@ public class AuthFilter implements HandlerInterceptor {
         }
         //判断用户是否登录
         String accessToken = request.getParameter("accessToken");
+        if (accessToken == null) {
+            return true;
+        }
         if (accessToken == null || accessToken.isEmpty()) {
             return reLogin(request, response);
         }

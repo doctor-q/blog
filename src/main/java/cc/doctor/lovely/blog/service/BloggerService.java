@@ -5,6 +5,7 @@ import cc.doctor.lovely.blog.controller.request.UpdateBloggerRequest;
 import cc.doctor.lovely.blog.controller.request.UpdateContactRequest;
 import cc.doctor.lovely.blog.controller.request.UserRequest;
 import cc.doctor.lovely.blog.controller.response.BloggerDetailResponse;
+import cc.doctor.lovely.blog.controller.response.BloggerResponse;
 import cc.doctor.lovely.blog.controller.response.CommonResponse;
 import cc.doctor.lovely.blog.dao.mapper.AttentionMapper;
 import cc.doctor.lovely.blog.dao.mapper.BlogPostMapper;
@@ -26,21 +27,26 @@ public class BloggerService {
     @Autowired
     private AttentionMapper attentionMapper;
 
-    public BloggerDetailResponse getBloggerDetail(UserRequest userRequest) {
-        Blogger blogger = bloggerMapper.selectByUserId(userRequest.getUserId());
+    public BloggerResponse getBlogger(Integer bloggerId) {
+        Blogger blogger = bloggerMapper.selectByPrimaryKey(bloggerId);
+        return new BloggerResponse(blogger);
+    }
+
+    public BloggerDetailResponse getBloggerDetail(Integer bloggerId) {
+        Blogger blogger = bloggerMapper.selectByUserId(bloggerId);
         BloggerDetailResponse bloggerDetailResponse = new BloggerDetailResponse(blogger);
         // 粉丝数
-        int followerCount = attentionMapper.selectFollowerCount(blogger.getId());
+        int followerCount = attentionMapper.selectFollowerCount(bloggerId);
         bloggerDetailResponse.setFollowerNum(followerCount);
-        List<Attention> followers = attentionMapper.selectFollowers(blogger.getId());
+        List<Attention> followers = attentionMapper.selectFollowers(bloggerId);
         bloggerDetailResponse.setFollowers(followers);
         // 关注数
-        int attentionCount = attentionMapper.selectAttentionCount(blogger.getId());
+        int attentionCount = attentionMapper.selectAttentionCount(bloggerId);
         bloggerDetailResponse.setAttentionNum(attentionCount);
-        List<Attention> attentions = attentionMapper.selectAttentions(blogger.getId());
+        List<Attention> attentions = attentionMapper.selectAttentions(bloggerId);
         bloggerDetailResponse.setAttentions(attentions);
         // 博客数
-        int blogNum = blogPostMapper.selectBloggerCount(userRequest.getUserId());
+        int blogNum = blogPostMapper.selectBlogCount(bloggerId);
         bloggerDetailResponse.setBlogNum(blogNum);
         // 博龄
         int current = Calendar.getInstance().get(Calendar.YEAR);

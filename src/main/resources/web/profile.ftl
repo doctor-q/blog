@@ -13,7 +13,7 @@
                 <div>
                     <span class="profile-picture">
                         <img id="avatar" class="editable img-responsive" alt="Alex's Avatar"
-                             src="{{bloggerDetail.header}}"/>
+                             src="${blogger.header}"/>
                     </span>
 
                     <div class="space-4"></div>
@@ -23,7 +23,7 @@
                             <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
                                 <i class="ace-icon fa fa-circle light-green"></i>
                                 &nbsp;
-                                <span class="white">{{bloggerDetail.username}}</span>
+                                <span class="white">${blogger.username}</span>
                             </a>
                         </div>
                     </div>
@@ -64,13 +64,13 @@
 
                 <div class="clearfix">
                     <div class="grid3">
-                        <span class="bigger-175 blue">{{bloggerDetail.followerNum}}</span>
+                        <span class="bigger-175 blue">${blogger.followerNum!0}</span>
                         粉丝
                     </div>
 
                     <div class="grid3">
                         关注
-                        <span class="bigger-175 blue">{{bloggerDetail.attentionNum}}</span>
+                        <span class="bigger-175 blue">${blogger.attentionNum!0}</span>
                         人
                     </div>
                     <div class="grid3">
@@ -86,20 +86,20 @@
                 <div align="left" style="padding-left: 40px">
                     <ul class="list-unstyled spaced">
                         <li>
-                            <i class="ace-icon fa fa-caret-right blue"></i>博客：{{bloggerDetail.blogNum}}篇
+                            <i class="ace-icon fa fa-caret-right blue"></i>博客：${blogger.blogNum!0}篇
                         </li>
 
                         <li>
-                            <i class="ace-icon fa fa-caret-right blue"></i>博龄：{{bloggerDetail.blogAge}}年
+                            <i class="ace-icon fa fa-caret-right blue"></i>博龄：${blogger.blogAge!0}年
                         </li>
 
                         <li>
-                            <i class="ace-icon fa fa-caret-right blue"></i>QQ：{{bloggerDetail.qq}}
+                            <i class="ace-icon fa fa-caret-right blue"></i>QQ：${blogger.qq!''}
                         </li>
 
                         <li>
                             <i class="ace-icon fa fa-caret-right blue"></i>
-                            邮箱：{{bloggerDetail.email}}
+                            邮箱：${blogger.email!''}
                         </li>
 
                         <li class="divider"></li>

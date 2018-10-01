@@ -28,7 +28,6 @@
                             </a>
                         </li>
 
-
                         <li>
                             <a data-toggle="tab" href="#contact">
                                 <i class="ace-icon fa fa-envelope bigger-120"></i>
@@ -126,141 +125,72 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="contact" class="tab-pane fade">
                             <div class="form-group">
                                 <div class="col-xs-2">
                                     <label class="pull-right">
                                         手机号<i class="ace-icon glyphicon glyphicon-earphone"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" name="mobile"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     邮箱<i class="ace-icon fa fa-envelope"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" name="email"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     QQ<i class="ace-icon fa fa-qq"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" name="qq"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     Github<i class="ace-icon fa fa-github"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" name="github"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     微博<i class="ace-icon fa fa-weibo"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" name="weibo"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     Facebook<i class="ace-icon fa fa-facebook"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" name="facebook"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     Twitter<i class="ace-icon fa fa-twitter"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" name="twitter"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-11">
-                                    <button class="btn btn-primary btn-sm pull-right">提交</button>
+                                    <button class="btn btn-primary btn-sm pull-right" id="btn-contact">提交</button>
                                 </div>
                             </div>
                         </div>
-
                         <div id="category" class="tab-pane fade">
                             <ul id="tree1"></ul>
                         </div>
-
-                        <div id="fans" class="tab-pane fade">
+                        <div id="followers" class="tab-pane fade">
+                            <#list blogDetail.followers as follower>
                             <div class="profile-activity clearfix">
                                 <div>
                                     <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
+                                    <a class="user" href="#">${follower.blogger}</a>
                                     <span></span>
                                     <div class="time">
                                         <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
+                                        ${follower.createdAt}
                                     </div>
                                 </div>
 
                                 <div class="tools action-buttons">
-                                    <a href="#" class="blue">
+                                    <a href="/attention" class="blue">
                                         关注ta
                                     </a>
                                 </div>
                             </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="blue">
-                                        关注ta
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="blue">
-                                        关注ta
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="blue">
-                                        关注ta
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="blue">
-                                        关注ta
-                                    </a>
-                                </div>
-                            </div>
+                            </#list>
                             <div class="pull-right">
                                 <a href="#">上一页</a>&nbsp;&nbsp;&nbsp;<a href="#">下一页</a>
                             </div>

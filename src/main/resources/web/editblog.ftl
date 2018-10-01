@@ -18,7 +18,7 @@
                 <div class="col-xs-8">
                     <div class="col-xs-12">
                         <div class="header blue">标题</div>
-                        <input class="form-control" <#if blogDetail??>value="{{blogDetail.title}}"</#if>>
+                        <input class="form-control">
                     </div>
                     <div class="col-sm-12">
                         <div class="header blue">内容</div>
@@ -160,5 +160,6 @@
     $tag_obj.remove(index);
 
 </script>
+<script src="/static/js/editblog.js"></script>
 </body>
 </html>

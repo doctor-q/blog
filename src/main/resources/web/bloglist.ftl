@@ -39,27 +39,27 @@
                         <div class="widget-box transparent">
                             <div class="widget-header widget-header-small">
                                 <h5 class="widget-title smaller">
-                                    <a href="#" class="blue">{{blog.title}}</a>
+                                    <a href="/blog/detail/${blog.id}" class="blue">${blog.title}</a>
                                 </h5>
 
                                 <span class="widget-toolbar no-border">
                         <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                        {{blog.createdAt}}
+                        ${blog.createdAt?datetime?string('yyyy-MM-dd HH:mm:ss')}
                         </span>
                             </div>
 
                             <div class="widget-body">
                                 <div class="widget-main">
                                     <div style="padding-bottom: 15px">
-                                        {{blog.summary}}
+                                        ${blog.summary}
                                     </div>
                                     <div>
                                     <span><i class="ace-icon glyphicon glyphicon-user"></i>
                                         作者：<a href="#">牧羊人</a></span>
                                         <span class="pull-right">
-                                        <i class="ace-icon fa fa-heart"></i>赞({{blog.approvalNum}})
-                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论({{blog.commentNum}})
-                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读({{blog.readNum}})</span>
+                                        <i class="ace-icon fa fa-heart"></i>赞(${blog.approvalNum!0})
+                                        &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论(${blog.commentNum!0})
+                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(${blog.readNum!0})</span>
                                     </div>
                                 </div>
                             </div>

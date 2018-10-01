@@ -10,6 +10,7 @@ import cc.doctor.lovely.blog.service.BloggerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -20,10 +21,9 @@ public class BloggerController {
     @Autowired
     private BloggerService bloggerService;
 
-    @RequestMapping("settings")
-    public Object settings(UserRequest userRequest, Model model) {
-        authService.setUserRequest(userRequest);
-        BloggerDetailResponse bloggerDetailResponse = bloggerService.getBloggerDetail(userRequest);
+    @RequestMapping("settings/{id}")
+    public Object settings(@PathVariable("id") Integer id, Model model) {
+        BloggerDetailResponse bloggerDetailResponse = bloggerService.getBloggerDetail(id);
         model.addAttribute("bloggerDetail", bloggerDetailResponse);
         return "settings";
     }

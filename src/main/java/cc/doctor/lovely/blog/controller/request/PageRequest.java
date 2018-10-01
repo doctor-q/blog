@@ -1,14 +1,14 @@
 package cc.doctor.lovely.blog.controller.request;
 
-import cc.doctor.lovely.blog.dao.OffsetLimit;
 import lombok.Data;
+import org.apache.ibatis.session.RowBounds;
 
 
 @Data
 public class PageRequest {
     private static final long serialVersionUID = -7022848697987418010L;
-    public Integer page = 1;
-    public Integer pageNums = 10;
+    private Integer page = 1;
+    private Integer pageNums = 10;
 
     public Integer getOffset() {
         return (page - 1) * pageNums;
@@ -18,10 +18,7 @@ public class PageRequest {
         return pageNums;
     }
 
-    public OffsetLimit toOffsetLimit() {
-        OffsetLimit offsetLimit = new OffsetLimit();
-        offsetLimit.setOffset(getOffset());
-        offsetLimit.setLimit(getLimit());
-        return offsetLimit;
+    public RowBounds toRowBounds() {
+        return new RowBounds(getOffset(), getLimit());
     }
 }

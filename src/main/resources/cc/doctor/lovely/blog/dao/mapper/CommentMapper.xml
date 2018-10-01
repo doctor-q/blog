@@ -8,11 +8,12 @@
     <result column="source_id" jdbcType="INTEGER" property="sourceId" />
     <result column="comment_ref_id" jdbcType="INTEGER" property="commentRefId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, comment, comment_type, source_id, comment_ref_id, user_id, created_at, updated_at
+    id, comment, comment_type, source_id, comment_ref_id, user_id, username, created_at, updated_at
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -26,7 +27,7 @@
   </delete>
   <insert id="insert" parameterType="cc.doctor.lovely.blog.dao.model.Comment">
     insert into comment (id, comment, comment_type, 
-      source_id, comment_ref_id, user_id, 
+      source_id, comment_ref_id, user_id, username,
       created_at, updated_at)
     values (#{id,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, #{commentType,jdbcType=TINYINT}, 
       #{sourceId,jdbcType=INTEGER}, #{commentRefId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
@@ -52,6 +53,9 @@
       </if>
       <if test="userId != null">
         user_id,
+      </if>
+      <if test="username != null">
+        username,
       </if>
       <if test="createdAt != null">
         created_at,
@@ -79,6 +83,9 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
       <if test="createdAt != null">
         #{createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -105,6 +112,9 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
       <if test="createdAt != null">
         created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -121,8 +131,15 @@
       source_id = #{sourceId,jdbcType=INTEGER},
       comment_ref_id = #{commentRefId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectRefComment" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where source_id = #{sourceId,jdbcType=INTEGER} AND comment_ref_id=#{commentRefId}
+  </select>
 </mapper>

@@ -8,6 +8,7 @@
 
 <#include 'nav.ftl'>
 
+<input name="id" value="${blogDetail.id}">
 <div class="main-container">
     <div class="main-content">
         <div class="page-content">
@@ -16,49 +17,49 @@
             <div class="col-xs-8">
                 <div class="row">
                     <h2 class="header center">
-                        {{blogDetail.title}}
+                    ${blogDetail.title}
                     </h2>
 
                 </div>
                 <div>
                     <div class="postText">
                         <div id="cnblogs_post_body" class="blogpost-body">
-                            {{blogDetail.content}}
+                        ${blogDetail.content}
                         </div>
                         <div id="MySignature"></div>
                         <div class="clear"></div>
                     </div>
                     <div style="padding: 20px 0 10px 0">
-                        文章分类： <a href="#">{{blogDetail.category}}</a>
+                        文章分类： <a href="#">${blogDetail.category!''}</a>
                     </div>
                 </div>
                 <div>
                     <span>
-                        <a href="#"><i class="ace-icon fa fa-heart"></i>赞({{blogDetail.approvalNum}})</a>
+                        <a href="#"><i class="ace-icon fa fa-heart"></i>赞(${blogDetail.approvalNum!0})</a>
                         &nbsp;&nbsp;
-                        <i class="ace-icon fa fa-book"></i>阅读({{blogDetail.readNum}})</span>
+                        <i class="ace-icon fa fa-book"></i>阅读(${blogDetail.readNum!0})</span>
                     </span>
                     <span class="pull-right">
                         <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                        {{blogDetail.createdAt}}
+                    ${blogDetail.createdAt?datetime?string('yyyy-MM-dd HH:mm:ss')}
                     </span>
                 </div>
                 <div class="hr hr-12 hr-dotted"></div>
                 <div>
-                    <div class="blue small">评论({{blogDetail.commentNum}})</div>
+                    <div class="blue small">评论(${blogDetail.commentNum!0})</div>
                     <div class="row">
-                        <textarea class="col-xs-12"></textarea>
+                        <textarea class="col-xs-12" name="comment"></textarea>
                         <div>
-                            <button class="btn btn-primary btn-sm pull-right">评论</button>
+                            <button class="btn btn-primary btn-sm pull-right" id="btn-submit-comment">评论</button>
                         </div>
                     </div>
                     <div>
-                        <#list commentDetails as commentDetail></#list>
+                        <#list blogDetail.commentDetails as comment>
                         <div class="widget-box transparent">
                             <div class="widget-header widget-header-small">
                                 <h5 class="widget-title smaller">
-                                    <a href="#" class="blue">{{commentDetail.userName}}</a>
-                                    <span class="grey">{{commentDetail.createdAt}}评论</span>
+                                    <a href="#" class="blue">${comment.username}</a>
+                                    <span class="grey">${comment.createdAt?datetime?string('yyyy-MM-dd HH:mm:ss')}评论</span>
                                 </h5>
 
                                 <span class="small pull-right">
@@ -68,15 +69,17 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    {{commentDetail.comment}}
+                                ${comment.comment}
                                 </div>
                             </div>
                         </div>
+                        </#list>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="/static/js/blogdetail.js"></script>
 </body>
 </html>

@@ -3,11 +3,12 @@ package cc.doctor.lovely.blog.controller.response;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Data
 public class BlogDetailResponse {
-    private String id;
+    private Integer id;
 
     private Integer userId;
 
@@ -37,5 +38,5 @@ public class BlogDetailResponse {
 
     private Date createdAt;
 
-    private List<CommentDetailResponse> commentDetails;
+    private List<CommentDetailResponse> commentDetails = new LinkedList<>();
 }

@@ -15,6 +15,9 @@
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
   </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithSummary" type="cc.doctor.lovely.blog.dao.model.BlogPostWithSummary">
+    <result column="summary" jdbcType="LONGVARCHAR" property="summary" />
+  </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs">
     <result column="summary" jdbcType="LONGVARCHAR" property="summary" />
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
@@ -225,4 +228,12 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectBlogCount" resultType="java.lang.Integer">
+    SELECT count(1) FROM blog_post WHERE user_id=#{userId}
+  </select>
+  <select id="selectPage" resultMap="ResultMapWithSummary">
+    select
+    <include refid="Base_Column_List" />,summary
+    from blog_post
+  </select>
 </mapper>

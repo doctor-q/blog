@@ -15,7 +15,7 @@
     id, blogger_id, blogger, follower_id, follower, is_deleted, created_at, updated_at
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from attention
     where id = #{id,jdbcType=INTEGER}
@@ -130,5 +130,17 @@
   </select>
   <select id="selectAttentionCount" resultType="int">
     SELECT count(1) FROM attention WHERE follower_id=#{followerId}
+  </select>
+  <select id="selectFollowers" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from attention
+    WHERE blogger_id=#{bloggerId}
+  </select>
+  <select id="selectAttentions" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from attention
+    WHERE follower_id=#{followerId}
   </select>
 </mapper>

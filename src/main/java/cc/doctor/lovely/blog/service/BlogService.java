@@ -9,12 +9,14 @@ import cc.doctor.lovely.blog.dao.mapper.BlogPostMapper;
 import cc.doctor.lovely.blog.dao.mapper.BlogTagMapper;
 import cc.doctor.lovely.blog.dao.model.BlogPost;
 import cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs;
+import cc.doctor.lovely.blog.dao.model.BlogPostWithSummary;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BlogService {
@@ -66,6 +68,7 @@ public class BlogService {
     }
 
     public List<BlogListResponse> getBlogList(BlogListRequest blogListRequest) {
-        return null;
+        List<BlogPostWithSummary> blogPosts = blogPostMapper.selectPage(blogListRequest.toRowBounds());
+        return blogPosts.stream().map(input -> new BlogListResponse(input)).collect(Collectors.toList());
     }
 }
