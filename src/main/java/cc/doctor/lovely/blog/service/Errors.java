@@ -10,10 +10,12 @@ public enum Errors {
     USERNAME_OR_PASSWORD_WRONG(1004, "用户名或密码错误"),
     ACCESS_DENY(1005, "权限不足"),
     TOKEN_REQUIRED(1006, "Token缺失"),
-    USER_NOT_EXIST(1007, "用户不存在"),
-    ROLE_EXISTS(1008, "角色名已存在"),
-    OLD_EMAIL_WRONG(1009, "原始邮箱错误"),
-    OLD_PASSWORD_WRONG(1010, "原始密码错误");
+    BAD_TOKEN(1007, "Token错误"),
+    USER_NOT_EXIST(1008, "用户不存在"),
+    ROLE_EXISTS(1009, "角色名已存在"),
+    OLD_EMAIL_WRONG(1010, "原始邮箱错误"),
+    OLD_PASSWORD_WRONG(1011, "原始密码错误"),
+    SERVER_ERROR(5000, "服务器错误");
 
     @Getter
     private int code;

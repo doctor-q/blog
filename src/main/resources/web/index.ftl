@@ -51,46 +51,16 @@
                         推荐博主
                     </div>
                     <ul class="ace-thumbnails clearfix">
+                        <#list bloggerList as blogger>
                         <li>
-                            <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox" class="cboxElement">
-                                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-2.jpg">
+                            <a href="/blog/list?bloggerId=${blogger.id}" data-rel="colorbox" class="cboxElement">
+                                <img width="150" height="150" alt="150x150" src="${blogger.header}">
                                 <div class="text">
-                                    <div class="inner">Sample Caption on Hover</div>
+                                    <div class="inner">${blogger.username}</div>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox" class="cboxElement">
-                                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-2.jpg">
-                                <div class="text">
-                                    <div class="inner">Sample Caption on Hover</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox" class="cboxElement">
-                                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-2.jpg">
-                                <div class="text">
-                                    <div class="inner">Sample Caption on Hover</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox" class="cboxElement">
-                                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-2.jpg">
-                                <div class="text">
-                                    <div class="inner">Sample Caption on Hover</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="assets/images/gallery/image-2.jpg" data-rel="colorbox" class="cboxElement">
-                                <img width="150" height="150" alt="150x150" src="assets/images/gallery/thumb-2.jpg">
-                                <div class="text">
-                                    <div class="inner">Sample Caption on Hover</div>
-                                </div>
-                            </a>
-                        </li>
+                        </#list>
                     </ul>
                 </div>
                 <div>

@@ -3,8 +3,8 @@
 <mapper namespace="cc.doctor.lovely.blog.dao.mapper.BloggerMapper">
   <resultMap id="BaseResultMap" type="cc.doctor.lovely.blog.dao.model.Blogger">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="header" jdbcType="VARCHAR" property="header" />
     <result column="gender" jdbcType="TINYINT" property="gender" />
     <result column="birthday" jdbcType="DATE" property="birthday" />
@@ -24,7 +24,7 @@
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_id, username, header, gender, birthday, address, company, position, marriage_status, 
+    id, username, password, header, gender, birthday, address, company, position, marriage_status,
     mobile, email, qq, github, weibo, facebook, twitter, is_deleted, created_at, updated_at
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -38,14 +38,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cc.doctor.lovely.blog.dao.model.Blogger">
-    insert into blogger (id, user_id, username, 
+    insert into blogger (id, username, password,
       header, gender, birthday, 
       address, company, position, 
       marriage_status, mobile, email, 
       qq, github, weibo, 
       facebook, twitter, is_deleted, 
       created_at, updated_at)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, md5(#{password,jdbcType=VARCHAR}),
       #{header,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, #{birthday,jdbcType=DATE}, 
       #{address,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
       #{marriageStatus,jdbcType=TINYINT}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
@@ -59,11 +59,11 @@
       <if test="id != null">
         id,
       </if>
-      <if test="userId != null">
-        user_id,
-      </if>
       <if test="username != null">
         username,
+      </if>
+      <if test="password != null">
+        password,
       </if>
       <if test="header != null">
         header,
@@ -121,11 +121,11 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        md5(#{password,jdbcType=VARCHAR}),
       </if>
       <if test="header != null">
         #{header,jdbcType=VARCHAR},
@@ -183,11 +183,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="cc.doctor.lovely.blog.dao.model.Blogger">
     update blogger
     <set>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = md5(#{password,jdbcType=VARCHAR}),
       </if>
       <if test="header != null">
         header = #{header,jdbcType=VARCHAR},
@@ -245,8 +245,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cc.doctor.lovely.blog.dao.model.Blogger">
     update blogger
-    set user_id = #{userId,jdbcType=INTEGER},
-      username = #{username,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
+      password = md5(#{password,jdbcType=VARCHAR}),
       header = #{header,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=TINYINT},
       birthday = #{birthday,jdbcType=DATE},
@@ -266,10 +266,15 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectPage" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from blogger
-    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPassword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from blogger
+    WHERE username=#{username} AND password=md5(#{password})
   </select>
 </mapper>

@@ -17,6 +17,11 @@ public class ServiceException extends Exception {
         this.message = message;
     }
 
+    public ServiceException(Errors errors) {
+        this.code = errors.getCode();
+        this.message = errors.getMessage();
+    }
+
     public int getCode() {
         return code;
     }

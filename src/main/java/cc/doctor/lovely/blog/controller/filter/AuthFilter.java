@@ -1,7 +1,10 @@
 package cc.doctor.lovely.blog.controller.filter;
 
 import cc.doctor.lovely.blog.controller.response.CommonResponse;
+import cc.doctor.lovely.blog.dao.model.Blogger;
 import cc.doctor.lovely.blog.service.AuthService;
+import cc.doctor.lovely.blog.service.jwt.JwtTokenService;
+import cc.doctor.lovely.blog.utils.CookieUtils;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,7 @@ public class AuthFilter implements HandlerInterceptor {
     private static final String XML_HTTP_REQUEST = "XMLHttpRequest";
 
     @Autowired
-    private AuthService authService;
+    private JwtTokenService tokenService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -30,13 +33,11 @@ public class AuthFilter implements HandlerInterceptor {
             return false;
         }
         //判断用户是否登录
-        String accessToken = request.getParameter("accessToken");
-        if (accessToken == null) {
-            return true;
-        }
+        String accessToken = CookieUtils.getCookie("accessToken", request);
         if (accessToken == null || accessToken.isEmpty()) {
             return reLogin(request, response);
         }
+
         return true;
     }
 

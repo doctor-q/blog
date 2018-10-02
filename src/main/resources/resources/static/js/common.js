@@ -1,7 +1,7 @@
 function formValues($form) {
     var formValues = {};
-    iterNameValue($form.find('input'));
-    iterNameValue($form.find('select'));
+    iterNameValue($form.find('input'), formValues);
+    iterNameValue($form.find('select'), formValues);
     return formValues;
 }
 

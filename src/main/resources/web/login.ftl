@@ -61,20 +61,20 @@
 
                                     <div class="space-6"></div>
 
-                                    <form>
+                                    <form id="form-login">
                                         <fieldset>
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="用户名/邮箱" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="text" name="username" class="form-control" placeholder="用户名/邮箱"/>
+                                                <i class="ace-icon fa fa-user"></i>
+                                            </span>
                                             </label>
 
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="password" name="password" class="form-control" placeholder="密码" />
+                                                <i class="ace-icon fa fa-lock"></i>
+                                            </span>
                                             </label>
 
                                             <div class="space"></div>
@@ -85,7 +85,7 @@
                                                     <span class="lbl"> 记住密码</span>
                                                 </label>
 
-                                                <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                <button id="btn-login" type="button" class="width-35 pull-right btn btn-sm btn-primary">
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">登录</span>
                                                 </button>
@@ -186,42 +186,42 @@
                                     <div class="space-6"></div>
                                     <p> 输入以下信息： </p>
 
-                                    <form>
+                                    <form id="form-register">
                                         <fieldset>
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="邮箱" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="email" name="email" class="form-control" placeholder="邮箱" />
+                                                <i class="ace-icon fa fa-envelope"></i>
+                                            </span>
                                             </label>
 
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="用户名" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="text" name="username" class="form-control" placeholder="用户名" />
+                                                <i class="ace-icon fa fa-user"></i>
+                                            </span>
                                             </label>
 
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="password" name="password" class="form-control" placeholder="密码" />
+                                                <i class="ace-icon fa fa-lock"></i>
+                                            </span>
                                             </label>
 
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="再次输入密码" />
-															<i class="ace-icon fa fa-retweet"></i>
-														</span>
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="password" class="form-control" placeholder="再次输入密码" />
+                                                <i class="ace-icon fa fa-retweet"></i>
+                                            </span>
                                             </label>
 
                                             <label class="block">
                                                 <input type="checkbox" class="ace" />
                                                 <span class="lbl">
-															同意
-															<a href="#">用户协议</a>
-														</span>
+                                                    同意
+                                                    <a href="#">用户协议</a>
+                                                </span>
                                             </label>
 
                                             <div class="space-24"></div>
@@ -232,9 +232,8 @@
                                                     <span class="bigger-110">重置</span>
                                                 </button>
 
-                                                <button type="button" class="width-65 pull-right btn btn-sm btn-success">
+                                                <button type="button" id="btn-register" class="width-65 pull-right btn btn-sm btn-success">
                                                     <span class="bigger-110">注册</span>
-
                                                     <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
                                                 </button>
                                             </div>
@@ -325,5 +324,8 @@
 
     });
 </script>
+<script src="/assets/js/jquery.cookie.js"></script>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/login.js"></script>
 </body>
 </html>

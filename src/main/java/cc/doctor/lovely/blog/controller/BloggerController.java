@@ -1,9 +1,7 @@
 package cc.doctor.lovely.blog.controller;
 
-import cc.doctor.lovely.blog.controller.request.AddBloggerRequest;
 import cc.doctor.lovely.blog.controller.request.UpdateBloggerRequest;
 import cc.doctor.lovely.blog.controller.request.UpdateContactRequest;
-import cc.doctor.lovely.blog.controller.request.UserRequest;
 import cc.doctor.lovely.blog.controller.response.BloggerDetailResponse;
 import cc.doctor.lovely.blog.service.AuthService;
 import cc.doctor.lovely.blog.service.BloggerService;
@@ -26,12 +24,6 @@ public class BloggerController {
         BloggerDetailResponse bloggerDetailResponse = bloggerService.getBloggerDetail(id);
         model.addAttribute("bloggerDetail", bloggerDetailResponse);
         return "settings";
-    }
-
-    @RequestMapping("addBlogger")
-    public Object addBlogger(AddBloggerRequest addBloggerRequest) {
-        authService.setUserRequest(addBloggerRequest);
-        return bloggerService.addBlogger(addBloggerRequest);
     }
 
     @RequestMapping("updateBloggerInfo")

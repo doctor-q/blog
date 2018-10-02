@@ -45,6 +45,7 @@
 </div>
 
 <script src="/assets/js/jquery-2.1.4.min.js"></script>
+<script src="/assets/js/jquery.cookie.js"></script>
 <script src="/assets/js/jquery-ui.custom.min.js"></script>
 <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
@@ -53,5 +54,6 @@
 <script src="/assets/js/ace-elements.min.js"></script>
 <script src="/assets/js/ace.min.js"></script>
 <script src="/assets/js/ace-extra.min.js"></script>
+<script src="/static/js/common.js"></script>
 </body>
 </html>
