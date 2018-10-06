@@ -34,11 +34,16 @@
                     <li><a href="/about">关于作者</a></li>
                 </ul>
             </nav>
-            <span class="pull-right" style="padding-top: 10px">
+            <span class="pull-right" style="padding-top: 10px;color: white">
+            <#if profile??>
                 <a href="/blog/add" style="color: white">写博客</a>
-                &nbsp;&nbsp;&nbsp;<a href="#" style="color: white">牧羊人</a>
-                &nbsp;&nbsp;&nbsp;<a href="/settings" style="color: white">设置</a>
-            </span>
+                &nbsp;&nbsp;&nbsp;<a href="#" style="color: white">${profile.username}</a>
+                &nbsp;&nbsp;&nbsp;<a href="/settings/${profile.id}" style="color: white">设置</a>
+            <#else >
+                <a href="/login" style="color: white">登录</a>
+                &nbsp;&nbsp;&nbsp;<a href="/register" style="color: white">注册</a>
+            </#if>
+        </span>
         </div>
         <!-- /.navbar-collapse -->
     </nav>

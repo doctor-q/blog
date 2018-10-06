@@ -12,7 +12,7 @@
             <div class="col-xs-12 center">
                 <div>
                     <span class="profile-picture">
-                        <img id="avatar" class="editable img-responsive" alt="Alex's Avatar"
+                        <img id="avatar" class="editable img-responsive" alt="头像"
                              src="${blogger.header}"/>
                     </span>
 

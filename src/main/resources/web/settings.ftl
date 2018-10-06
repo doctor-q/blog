@@ -79,8 +79,8 @@
                                 <div class="col-xs-2"><label class="pull-right">性别：</label></div>
                                 <div class="col-xs-9">
                                     <select class="form-control">
-                                        <option>男</option>
-                                        <option>女</option>
+                                        <option value="0" ${blogger.gender}>男</option>
+                                        <option value="1">女</option>
                                     </select>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                                 <div class="col-xs-9">
                                     <div class="input-group">
                                         <input class="form-control date-picker" id="id-date-picker-1" type="text"
-                                               data-date-format="yyyy-mm-dd">
+                                               data-date-format="yyyy-mm-dd" value="${blogger.birthday!''}">
                                         <span class="input-group-addon">
                                             <i class="fa fa-calendar bigger-110"></i>
                                         </span>
@@ -98,15 +98,15 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">地址：</label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" value="${blogger.address!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">公司：</label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" value="${blogger.company!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">职位：</label></div>
-                                <div class="col-xs-9"><input class="form-control"></div>
+                                <div class="col-xs-9"><input class="form-control" value="${blogger.position!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">婚姻状况：</label></div>
@@ -126,41 +126,42 @@
                             </div>
                         </div>
                         <div id="contact" class="tab-pane fade">
+                            <input name="id" type="hidden" value="${blogger.id!''}">
                             <div class="form-group">
                                 <div class="col-xs-2">
                                     <label class="pull-right">
                                         手机号<i class="ace-icon glyphicon glyphicon-earphone"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control" name="mobile"></div>
+                                <div class="col-xs-9"><input class="form-control" name="mobile" value="${blogger.mobile!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     邮箱<i class="ace-icon fa fa-envelope"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control" name="email"></div>
+                                <div class="col-xs-9"><input class="form-control" name="email" value="${blogger.email!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     QQ<i class="ace-icon fa fa-qq"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control" name="qq"></div>
+                                <div class="col-xs-9"><input class="form-control" name="qq" value="${blogger.qq!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     Github<i class="ace-icon fa fa-github"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control" name="github"></div>
+                                <div class="col-xs-9"><input class="form-control" name="github" value="${blogger.github!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     微博<i class="ace-icon fa fa-weibo"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control" name="weibo"></div>
+                                <div class="col-xs-9"><input class="form-control" name="weibo" value="${blogger.weibo!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     Facebook<i class="ace-icon fa fa-facebook"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control" name="facebook"></div>
+                                <div class="col-xs-9"><input class="form-control" name="facebook" value="${blogger.facebook!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">
                                     Twitter<i class="ace-icon fa fa-twitter"></i></label></div>
-                                <div class="col-xs-9"><input class="form-control" name="twitter"></div>
+                                <div class="col-xs-9"><input class="form-control" name="twitter" value="${blogger.twitter!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-11">
@@ -172,7 +173,7 @@
                             <ul id="tree1"></ul>
                         </div>
                         <div id="followers" class="tab-pane fade">
-                            <#list blogDetail.followers as follower>
+                            <#list blogger.followers as follower>
                             <div class="profile-activity clearfix">
                                 <div>
                                     <img class="pull-left" src="/assets/images/avatars/avatar5.png">
@@ -288,7 +289,6 @@
                     </div>
                 </div>
             </div><!-- /.col -->
-
         </div>
     </div>
 </div>
@@ -299,16 +299,13 @@
 <script src="/assets/js/bootstrap-datepicker.min.js"></script>
 <script src="/assets/js/bootstrap-datepicker.zh-CN.js"></script>
 <script src="/assets/js/moment.min.js"></script>
-<script src="assets/js/tree.min.js"></script>
-
+<script src="/assets/js/tree.min.js"></script>
 <script>
     $('.date-picker').datepicker({
         language: 'zh-CN',
         autoclose: true,
         todayHighlight: true
-    })
-    //show datepicker when clicking on the icon
-            .next().on(ace.click_event, function () {
+    }).next().on(ace.click_event, function () {
         $(this).prev().focus();
     });
 
@@ -351,9 +348,8 @@
                 'trucks': {text: 'Trucks', type: 'item'}
             }
         };
-
         var dataSource = function (options, callback) {
-            var $data = null
+            var $data = null;
             if (!("text" in options) && !("type" in options)) {
                 $data = tree_data;//the root tree
                 callback({data: $data});
@@ -369,15 +365,11 @@
                 setTimeout(function () {
                     callback({data: $data});
                 }, parseInt(Math.random() * 500) + 200);
-
-            //we have used static data here
-            //but you can retrieve your data dynamically from a server using ajax call
-            //checkout examples/treeview.html and examples/treeview.js for more info
         };
-
         return dataSource
     }
 
 </script>
+<script src="/static/js/settings.js"></script>
 </body>
 </html>

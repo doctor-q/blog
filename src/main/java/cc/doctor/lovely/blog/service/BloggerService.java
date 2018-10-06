@@ -97,6 +97,9 @@ public class BloggerService {
         Preconditions.checkNotNull(registerRequest.getPassword());
 
         Blogger blogger = registerRequest.toBlogger();
+        if (blogger.getHeader() == null) {
+            blogger.setHeader("/assets/images/avatars/avatars.png");
+        }
         bloggerMapper.insertSelective(blogger);
         return CommonResponse.successResponse(blogger.getId());
     }

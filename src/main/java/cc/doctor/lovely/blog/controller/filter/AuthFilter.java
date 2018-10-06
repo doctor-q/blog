@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +24,6 @@ import static com.google.common.net.HttpHeaders.X_REQUESTED_WITH;
 public class AuthFilter implements HandlerInterceptor {
 
     private static final String XML_HTTP_REQUEST = "XMLHttpRequest";
-
-    @Autowired
-    private JwtTokenService tokenService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
