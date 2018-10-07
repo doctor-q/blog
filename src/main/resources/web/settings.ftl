@@ -22,44 +22,40 @@
                 <div class="tabbable">
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active">
-                            <a data-toggle="tab" href="#profile">
+                            <a data-toggle="tab" href="#form-blogger-info">
                                 <i class="green ace-icon glyphicon glyphicon-user bigger-120"></i>
                                 个人信息
                             </a>
                         </li>
-
                         <li>
-                            <a data-toggle="tab" href="#contact">
+                            <a data-toggle="tab" href="#form-contact">
                                 <i class="ace-icon fa fa-envelope bigger-120"></i>
                                 联系方式
                             </a>
                         </li>
-
                         <li>
-                            <a data-toggle="tab" href="#category">
+                            <a data-toggle="tab" href="#form-category">
                                 <i class="ace-icon fa fa-bookmark-o bigger-120"></i>
                                 博客分类
                             </a>
                         </li>
-
                         <li>
-                            <a data-toggle="tab" href="#fans">
+                            <a data-toggle="tab" href="#form-followers">
                                 <i class="ace-icon fa fa-users bigger-120"></i>
                                 我的粉丝
                             </a>
                         </li>
-
                         <li>
-                            <a data-toggle="tab" href="#attentions">
+                            <a data-toggle="tab" href="#form-attentions">
                                 <i class="ace-icon fa fa-heart bigger-120"></i>
                                 我的关注
                             </a>
                         </li>
-
                     </ul>
 
                     <div class="tab-content" style="height: 500px">
-                        <div id="profile" class="tab-pane fade in active">
+                        <div id="form-blogger-info" class="tab-pane fade in active">
+                            <input name="id" type="hidden" value="${blogger.id!''}">
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">头像：</label></div>
                                 <div class="col-xs-9">
@@ -78,9 +74,9 @@
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">性别：</label></div>
                                 <div class="col-xs-9">
-                                    <select class="form-control">
-                                        <option value="0" ${blogger.gender}>男</option>
-                                        <option value="1">女</option>
+                                    <select class="form-control" name="gender">
+                                        <option value="0" <#if blogger.gender == 0>selected="selected"</#if>>男</option>
+                                        <option value="1" <#if blogger.gender == 1>selected="selected"</#if>>女</option>
                                     </select>
                                 </div>
                             </div>
@@ -89,7 +85,7 @@
                                 <div class="col-xs-9">
                                     <div class="input-group">
                                         <input class="form-control date-picker" id="id-date-picker-1" type="text"
-                                               data-date-format="yyyy-mm-dd" value="${blogger.birthday!''}">
+                                               name="birthday" data-date-format="yyyy-mm-dd" value="${blogger.birthday?datetime?string('yyyy-MM-dd')}">
                                         <span class="input-group-addon">
                                             <i class="fa fa-calendar bigger-110"></i>
                                         </span>
@@ -98,34 +94,34 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">地址：</label></div>
-                                <div class="col-xs-9"><input class="form-control" value="${blogger.address!''}"></div>
+                                <div class="col-xs-9"><input class="form-control" name="address" value="${blogger.address!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">公司：</label></div>
-                                <div class="col-xs-9"><input class="form-control" value="${blogger.company!''}"></div>
+                                <div class="col-xs-9"><input class="form-control" name="company" value="${blogger.company!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">职位：</label></div>
-                                <div class="col-xs-9"><input class="form-control" value="${blogger.position!''}"></div>
+                                <div class="col-xs-9"><input class="form-control" name="position" value="${blogger.position!''}"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-2"><label class="pull-right">婚姻状况：</label></div>
                                 <div class="col-xs-9">
-                                    <select class="form-control">
-                                        <option>单身待解救</option>
-                                        <option>有对象</option>
-                                        <option>已结婚</option>
-                                        <option>有仔</option>
+                                    <select class="form-control" name="marriageStatus">
+                                        <option value="0" <#if blogger.marriageStatus == 0>selected="selected"</#if>>单身待解救</option>
+                                        <option value="1" <#if blogger.marriageStatus == 1>selected="selected"</#if>>有对象</option>
+                                        <option value="2" <#if blogger.marriageStatus == 2>selected="selected"</#if>>已结婚</option>
+                                        <option value="3" <#if blogger.marriageStatus == 3>selected="selected"</#if>>有仔</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-11">
-                                    <button class="btn btn-primary btn-sm pull-right">提交</button>
+                                    <button class="btn btn-primary btn-sm pull-right" id="btn-blogger-info">提交</button>
                                 </div>
                             </div>
                         </div>
-                        <div id="contact" class="tab-pane fade">
+                        <div id="form-contact" class="tab-pane fade">
                             <input name="id" type="hidden" value="${blogger.id!''}">
                             <div class="form-group">
                                 <div class="col-xs-2">
@@ -169,24 +165,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="category" class="tab-pane fade">
+                        <div id="form-category" class="tab-pane fade">
                             <ul id="tree1"></ul>
                         </div>
-                        <div id="followers" class="tab-pane fade">
+                        <div id="form-followers" class="tab-pane fade">
                             <#list blogger.followers as follower>
                             <div class="profile-activity clearfix">
                                 <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#">${follower.blogger}</a>
+                                    <img class="pull-left" src="${follower.header!''}">
+                                    <a class="user" href="#">${follower.follower}</a>
                                     <span></span>
                                     <div class="time">
                                         <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        ${follower.createdAt}
+                                        ${follower.createdAt?datetime?string('yyyy-MM-dd HH:mm:ss')}
                                     </div>
                                 </div>
 
                                 <div class="tools action-buttons">
-                                    <a href="/attention" class="blue">
+                                    <a class="blue" href="" onclick="attention(${follower.followerId}, ${follower.follower})">
                                         关注ta
                                     </a>
                                 </div>
@@ -196,92 +192,26 @@
                                 <a href="#">上一页</a>&nbsp;&nbsp;&nbsp;<a href="#">下一页</a>
                             </div>
                         </div>
-                        <div id="attentions" class="tab-pane fade">
+                        <div id="form-attentions" class="tab-pane fade">
+                            <#list blogger.attentions as attention>
                             <div class="profile-activity clearfix">
                                 <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
+                                    <img class="pull-left" src="${attention.header!''}">
+                                    <a class="user" href="#">${attention.blogger}</a>
                                     <span></span>
                                     <div class="time">
                                         <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
+                                        ${attention.createdAt?datetime?string('yyyy-MM-dd HH:mm:ss')}
                                     </div>
                                 </div>
 
                                 <div class="tools action-buttons">
-                                    <a href="#" class="red2">
+                                    <a class="red2" href="" onclick="unAttention(${attention.id}, ${attention.blogger})">
                                         取消关注
                                     </a>
                                 </div>
                             </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="red2">
-                                        取消关注
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="red2">
-                                        取消关注
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="red2">
-                                        取消关注
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="profile-activity clearfix">
-                                <div>
-                                    <img class="pull-left" src="/assets/images/avatars/avatar5.png">
-                                    <a class="user" href="#"> Alex Doe </a>
-                                    <span></span>
-                                    <div class="time">
-                                        <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                        2017-10-01 09:02:30
-                                    </div>
-                                </div>
-
-                                <div class="tools action-buttons">
-                                    <a href="#" class="red2">
-                                        取消关注
-                                    </a>
-                                </div>
-                            </div>
+                            </#list>
                             <div class="pull-right">
                                 <a href="#">上一页</a>&nbsp;&nbsp;&nbsp;<a href="#">下一页</a>
                             </div>

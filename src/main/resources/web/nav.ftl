@@ -37,7 +37,7 @@
             <span class="pull-right" style="padding-top: 10px;color: white">
             <#if profile??>
                 <a href="/blog/add" style="color: white">写博客</a>
-                &nbsp;&nbsp;&nbsp;<a href="#" style="color: white">${profile.username}</a>
+                &nbsp;&nbsp;&nbsp;<a href="/blog/list?bloggerId=${profile.id}" style="color: white">${profile.username}</a>
                 &nbsp;&nbsp;&nbsp;<a href="/settings/${profile.id}" style="color: white">设置</a>
             <#else >
                 <a href="/login" style="color: white">登录</a>

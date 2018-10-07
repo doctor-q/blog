@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -33,20 +34,20 @@ public class BlogController {
 
 
     @RequestMapping("post")
+    @ResponseBody
     public CommonResponse post(PostBlogRequest postBlogRequest) {
-        authService.setUserRequest(postBlogRequest);
         return blogService.post(postBlogRequest);
     }
 
     @RequestMapping("delete")
+    @ResponseBody
     public CommonResponse delete(DeleteBlogRequest deleteBlogRequest) {
         authService.setUserRequest(deleteBlogRequest);
         return blogService.delete(deleteBlogRequest);
     }
 
     @RequestMapping("add")
-    public String add(UserRequest userRequest, Model model) {
-        authService.setUserRequest(userRequest);
+    public String add() {
         return "editblog";
     }
 
@@ -65,10 +66,17 @@ public class BlogController {
         return "profilebloglist";
     }
 
-    @RequestMapping("detail/{id}")
-    public String detail(@PathVariable("id") Integer id, Model model) {
+    @RequestMapping("{id}")
+    public String blog(@PathVariable("id") Integer id, Model model) {
         BlogDetailResponse blogDetail = blogService.getBlogDetail(id);
         model.addAttribute("blogDetail", blogDetail);
         return "blogdetail";
+    }
+
+    @RequestMapping("detail/{id}")
+    @ResponseBody
+    public Object detail(@PathVariable("id") Integer id) {
+        BlogDetailResponse blogDetail = blogService.getBlogDetail(id);
+        return CommonResponse.successResponse(blogDetail);
     }
 }

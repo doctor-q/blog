@@ -28,7 +28,7 @@ public class AuthFilter implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (!(handler instanceof HandlerMethod)) {
-            return false;
+            return true;
         }
         //判断用户是否登录
         String accessToken = CookieUtils.getCookie("accessToken", request);

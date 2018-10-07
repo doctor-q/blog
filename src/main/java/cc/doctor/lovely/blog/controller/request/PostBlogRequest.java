@@ -2,6 +2,7 @@ package cc.doctor.lovely.blog.controller.request;
 
 import cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import java.util.List;
 
@@ -25,9 +26,11 @@ public class PostBlogRequest extends UserRequest {
 
     private String content;
 
-    private List<String> tags;
+    private String tags;
 
     public BlogPostWithBLOBs toBlogWithBlobs() {
-        return null;
+        BlogPostWithBLOBs blogPostWithBLOBs = new BlogPostWithBLOBs();
+        BeanUtils.copyProperties(this, blogPostWithBLOBs);
+        return blogPostWithBLOBs;
     }
 }

@@ -15,10 +15,10 @@
             </div>
             <div class="col-xs-12">
                 <div class="col-xs-2"></div>
-                <div class="col-xs-8">
+                <div class="col-xs-8" id="form-blog">
                     <div class="col-xs-12">
                         <div class="header blue">标题</div>
-                        <input class="form-control">
+                        <input class="form-control" name="title">
                     </div>
                     <div class="col-sm-12">
                         <div class="header blue">内容</div>
@@ -26,27 +26,9 @@
                         <div class="widget-box">
                             <div class="widget-body">
                                 <div class="widget-main no-padding">
-                                    <div class="wysiwyg-editor" id="editor1"></div>
+                                    <div class="" id="blog-content"></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12">
-                        <div class="header blue">分类</div>
-                        <div>
-                            <label class="col-xs-3">
-                                <input name="category" type="radio">Java
-                            </label>
-                            <label class="col-xs-3">
-                                <input name="category" type="radio">Mysql
-                            </label>
-                            <label class="col-xs-3">
-                                <input name="category" type="radio">操作系统
-                            </label>
-                            <label class="col-xs-3">
-                                <input name="category" type="radio">算法
-                            </label>
                         </div>
                     </div>
 
@@ -62,12 +44,12 @@
 
                     <div class="col-xs-12">
                         <div class="btn-group pull-right">
-                            <button class="btn btn-sm btn-round">
+                            <button class="btn btn-sm btn-round" id="btn-save">
                                 <i class="ace-icon fa fa-floppy-o bigger-125"></i>
                                 保存草稿
                             </button>
 
-                            <button class="btn btn-sm btn-default btn-round">
+                            <button class="btn btn-sm btn-success btn-round" id="btn-publish">
                                 <i class="ace-icon fa fa-globe bigger-125"></i>
                                 发布
                                 <i class="ace-icon fa fa-arrow-right icon-on-right bigger-125"></i>
@@ -85,7 +67,17 @@
 <script src="/assets/js/bootstrap-wysiwyg.min.js"></script>
 <script src="/assets/js/bootstrap-tag.min.js"></script>
 <script>
-    $('#editor1').ace_wysiwyg({
+    $('#blog-content').css({
+        'height': '500px',
+        'background-color': '#F7F8FA',
+        'border-collapse': 'separate',
+        'border': '1px solid #BBC0CA',
+        'padding': '4px',
+        'box-sizing': 'content-box',
+        'overflow-y': 'scroll',
+        'overflow-x': 'hidden',
+        'outline': 0
+    }).ace_wysiwyg({
         toolbar: [
             'font',
             null,
@@ -133,32 +125,19 @@
                 '<strong>File upload error</strong> ' + msg + ' </div>').prependTo('#alerts');
     }
 
+    // tags
     var tag_input = $('#form-field-tags');
 
-    tag_input.tag(
-            {
-                placeholder: tag_input.attr('placeholder'),
-                //enable typeahead by specifying the source array
-                source: ace.vars['US_STATES'],//defined in ace.js >> ace.enable_search_ahead
-                /**
-                 //or fetch data from database, fetch those that match "query"
-                 source: function(query, process) {
-						  $.ajax({url: 'remote_source.php?q='+encodeURIComponent(query)})
-						  .done(function(result_items){
-							process(result_items);
-						  });
-						}
-                 */
-            }
-    );
+    tag_input.tag({
+        placeholder: tag_input.attr('placeholder'),
+        source: []
+    });
 
     //programmatically add/remove a tag
     var $tag_obj = tag_input.data('tag');
     // $tag_obj.add('Programmatically Added');
-
     var index = $tag_obj.inValues('some tag');
     $tag_obj.remove(index);
-
 </script>
 <script src="/static/js/editblog.js"></script>
 </body>

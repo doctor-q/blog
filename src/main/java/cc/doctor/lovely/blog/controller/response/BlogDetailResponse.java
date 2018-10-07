@@ -38,5 +38,7 @@ public class BlogDetailResponse {
 
     private Date createdAt;
 
+    private List<String> tags;
+
     private List<CommentDetailResponse> commentDetails = new LinkedList<>();
 }

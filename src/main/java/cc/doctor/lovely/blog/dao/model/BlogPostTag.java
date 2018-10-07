@@ -5,7 +5,7 @@ public class BlogPostTag {
 
     private Integer postId;
 
-    private Integer tagId;
+    private String tag;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class BlogPostTag {
         this.postId = postId;
     }
 
-    public Integer getTagId() {
-        return tagId;
+    public String getTag() {
+        return tag;
     }
 
-    public void setTagId(Integer tagId) {
-        this.tagId = tagId;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

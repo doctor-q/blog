@@ -8,6 +8,7 @@ import cc.doctor.lovely.blog.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class AttentionController {
@@ -17,6 +18,7 @@ public class AttentionController {
     private AuthService authService;
 
     @RequestMapping("attention")
+    @ResponseBody
     public Object attention(AttentionRequest attentionRequest) {
         authService.setUserRequest(attentionRequest);
         return attentionService.attention(attentionRequest);
@@ -24,18 +26,21 @@ public class AttentionController {
 
 
     @RequestMapping("unAttention")
+    @ResponseBody
     public Object unAttention(UnAttentionRequest unAttentionRequest) {
         authService.setUserRequest(unAttentionRequest);
         return attentionService.unAttention(unAttentionRequest);
     }
 
     @RequestMapping("getFollowers")
+    @ResponseBody
     public Object getFollowers(UserRequest userRequest) {
         authService.setUserRequest(userRequest);
         return attentionService.getFollowers(userRequest);
     }
 
     @RequestMapping("getAttentions")
+    @ResponseBody
     public Object getAttentions(UserRequest userRequest) {
         authService.setUserRequest(userRequest);
         return attentionService.getAttentions(userRequest);

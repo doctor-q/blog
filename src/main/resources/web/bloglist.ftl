@@ -39,7 +39,7 @@
                         <div class="widget-box transparent">
                             <div class="widget-header widget-header-small">
                                 <h5 class="widget-title smaller">
-                                    <a href="/blog/detail/${blog.id}" class="blue">${blog.title}</a>
+                                    <a href="/blog/${blog.id}" class="blue">${blog.title}</a>
                                 </h5>
 
                                 <span class="widget-toolbar no-border">
@@ -55,11 +55,15 @@
                                     </div>
                                     <div>
                                     <span><i class="ace-icon glyphicon glyphicon-user"></i>
-                                        作者：<a href="#">牧羊人</a></span>
+                                        作者：<a href="#">${blog.username}</a></span>
                                         <span class="pull-right">
                                         <i class="ace-icon fa fa-heart"></i>赞(${blog.approvalNum!0})
                                         &nbsp;<i class="ace-icon fa fa-pencil-square-o"></i>评论(${blog.commentNum!0})
-                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(${blog.readNum!0})</span>
+                                        &nbsp;<i class="ace-icon fa fa-book"></i>阅读(${blog.readNum!0})
+                                        <#if profile?? && profile.id=blog.userId>
+                                            &nbsp;<a href="/blog/edit/${blog.id}"><i class="ace-icon fa fa-pencil-square-o">编辑</i></a>
+                                        </#if>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

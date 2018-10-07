@@ -3,6 +3,7 @@ package cc.doctor.lovely.blog.dao.mapper;
 import cc.doctor.lovely.blog.dao.model.BlogPost;
 import cc.doctor.lovely.blog.dao.model.BlogPostWithBLOBs;
 import cc.doctor.lovely.blog.dao.model.BlogPostWithSummary;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
@@ -28,5 +29,5 @@ public interface BlogPostMapper {
 
     int selectBlogCount(Integer userId);
 
-    List<BlogPostWithSummary> selectPage(RowBounds rowBounds);
+    List<BlogPostWithSummary> selectPage(@Param("bloggerId") Integer bloggerId, @Param("orderBy") String orderBy, RowBounds rowBounds);
 }
